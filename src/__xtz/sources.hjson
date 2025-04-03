@@ -1,0 +1,11 @@
+// SOURCE: https://gitlab.com/tezos/tezos/-/packages/37393733 
+{
+    linux-arm64: {
+        dal-node: https://gitlab.com/tezos/tezos/-/package_files/185568009/download
+        prism: https://github.com/alis-is/prism-releases/releases/download/0.1.5/prism-linux-arm64
+    }
+    linux-x86_64: {
+        dal-node: https://gitlab.com/tezos/tezos/-/package_files/185566030/download
+        prism: https://github.com/alis-is/prism-releases/releases/download/0.1.5/prism-linux-amd64
+    }
+}

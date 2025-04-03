@@ -1,0 +1,20 @@
+{
+    // legacy
+    // srs_zcash_g1: {
+    //     url: https://assets.nomadic-labs.cloud/dal_trusted_setup/srs_filecoin_g1_21
+    //     sha256: 1ecc6debe5fdf363afd77073111bf84947dd72b26ed7f27db8871f9279d34604
+    // }
+    srsu_zcash_g1: {
+        url: https://assets.nomadic-labs.cloud/dal_trusted_setup/srsu_g1
+        sha256: c48ce4add1de2a7561108f17bf0c16bc1e93c0bff24bc7da465c24e0b4b2653e
+    }
+    // legacy
+    // srs_zcash_g2: {
+    //     url: https://assets.nomadic-labs.cloud/dal_trusted_setup/srs_filecoin_g2_21
+    //     sha256: 97d76e266e657cc3c859c3359c717136f55cfe4c0256ea418f907406cb130218
+    // }
+    srsu_zcash_g2: {
+        url: https://assets.nomadic-labs.cloud/dal_trusted_setup/srsu_g2
+        sha256: e7fbe747ae3648a5b664d8f8bd7c524996f7ed07f3331f905d2e73767d580f7c
+    }
+}

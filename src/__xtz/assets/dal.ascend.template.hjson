@@ -1,0 +1,20 @@
+{
+    executable: {{{ROOT_DIR}}}/bin/dal-node
+    args: [
+        run
+        --rpc-addr
+        {{{model.RPC_ADDR}}}
+        {{#model.DAL_STARTUP_ARGS}}
+        {{.}}
+        {{/model.DAL_STARTUP_ARGS}}
+    ]
+    environment: {
+        HOME: {{{ROOT_DIR}}}/data
+        TEZOS_LOG: "* -> {{{model.DAL_LOG_LEVEL}}}"
+    }
+    working_directory: {{{ROOT_DIR}}}/data
+    restart: always
+    restart_delay: 20
+    stop_timeout: 300
+    user: {{{USER}}}
+}
