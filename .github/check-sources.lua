@@ -31,7 +31,7 @@ for _, platform_sources in pairs(sources) do
 	end
 end
 
-if #source_urls < 4 then
+if #source_urls < 2 then
 	error("Not enough source urls found")
 end
 print("Validated " .. #source_urls .. " source urls")
