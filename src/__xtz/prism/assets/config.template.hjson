@@ -1,0 +1,15 @@
+{
+    variables: {
+        node_rpc_endpoint: {{{model.NODE_RPC_HOST_AND_PORT}}}
+        dal_rpc_endpoint: {{{model.RPC_HOST_AND_PORT}}}
+        prism_server: {{{model.PRISM_REMOTE}}}
+        tezos_node_forwarding_disabled: {{{model.PRISM_NODE_FORWARDING_DISABLED}}}
+    }
+    includes: [
+        "./conf.d/*.hjson",
+    ]
+    nodes: {
+        main: {
+        }
+    }
+}

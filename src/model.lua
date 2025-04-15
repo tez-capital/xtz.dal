@@ -53,14 +53,21 @@ if table.is_array(attester_profiles) and #attester_profiles > 0 then
     table.insert(DAL_STARTUP_ARGS, 2, string.join(",", table.unpack(attester_profiles)))
 end
 
+local package_utils = require("__xtz.utils")
 local node_endpoint = am.app.get_configuration("NODE_ENDPOINT", "http://127.0.0.1:8732/")
+local node_endpoint_host_and_port = package_utils.extract_host_and_port(node_endpoint)
 table.insert(DAL_STARTUP_ARGS, 1, "--endpoint")
 table.insert(DAL_STARTUP_ARGS, 2, node_endpoint)
+
+local rpc_addr = am.app.get_configuration("RPC_ADDR", "127.0.0.1")
+local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr)
 
 am.app.set_model(
     {
         WANTED_BINARIES = wanted_binaries,
-        RPC_ADDR = am.app.get_configuration("RPC_ADDR", "127.0.0.1"),
+        RPC_ADDR = rpc_addr,
+        RPC_HOST_AND_PORT = rpc_host_and_port,
+        NODE_RPC_HOST_AND_PORT = node_endpoint_host_and_port,
 		SERVICE_CONFIGURATION = util.merge_tables(
             {
                 TimeoutStopSec = 300,
@@ -69,7 +76,10 @@ am.app.set_model(
             true
         ),
         DAL_LOG_LEVEL = am.app.get_configuration("DAL_LOG_LEVEL", TEZOS_LOG_LEVEL),
-        DAL_STARTUP_ARGS = DAL_STARTUP_ARGS
+        DAL_STARTUP_ARGS = DAL_STARTUP_ARGS,
+        -- prism
+        PRISM_REMOTE = m.app.get_configuration({ "PRISM", "remote" }),
+        PRISM_NODE_FORWARDING_DISABLED = am.app.get_configuration({ "PRISM", "node" }, false) ~= true,
     },
     { merge = true, overwrite = true }
 )
