@@ -78,7 +78,7 @@ am.app.set_model(
         DAL_LOG_LEVEL = am.app.get_configuration("DAL_LOG_LEVEL", TEZOS_LOG_LEVEL),
         DAL_STARTUP_ARGS = DAL_STARTUP_ARGS,
         -- prism
-        PRISM_REMOTE = m.app.get_configuration({ "PRISM", "remote" }),
+        PRISM_REMOTE = am.app.get_configuration({ "PRISM", "remote" }),
         PRISM_NODE_FORWARDING_DISABLED = am.app.get_configuration({ "PRISM", "node" }, false) ~= true,
     },
     { merge = true, overwrite = true }
