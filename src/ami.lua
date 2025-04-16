@@ -52,18 +52,18 @@ return {
                     am.app.render()
                     am.execute_extension("__xtz/configure.lua", { context_fail_exit_code = EXIT_APP_CONFIGURE_ERROR })
                 end
-                log_success("XTZ node setup complete.")
+                log_success("XTZ dal node setup complete.")
             end
         },
         start = {
             description = "ami 'start' sub command",
-            summary = "Starts the XTZ node",
+            summary = "Starts the XTZ dal node",
             action = "__xtz/start.lua",
             context_fail_exit_code = EXIT_APP_START_ERROR
         },
         stop = {
             description = "ami 'stop' sub command",
-            summary = "Stops the XTZ node",
+            summary = "Stops the XTZ dal node",
             action = "__xtz/stop.lua",
             context_fail_exit_code = EXIT_APP_STOP_ERROR
         },
@@ -76,8 +76,8 @@ return {
                     return
                 end
                 -- //TODO: Validate platform
-                ami_assert(proc.EPROC, "xtz node AMI requires extra api - eli.proc.extra", EXIT_MISSING_API)
-                ami_assert(fs.EFS, "xtz node AMI requires extra api - eli.fs.extra", EXIT_MISSING_API)
+                ami_assert(proc.EPROC, "xtz dal node AMI requires extra api - eli.proc.extra", EXIT_MISSING_API)
+                ami_assert(fs.EFS, "xtz dal node AMI requires extra api - eli.fs.extra", EXIT_MISSING_API)
 
                 ami_assert(type(am.app.get("id")) == 'string', "id not specified!", EXIT_INVALID_CONFIGURATION)
                 ami_assert(type(am.app.get_configuration()) == 'table', "configuration not found in app.h/json!",
@@ -85,7 +85,7 @@ return {
                 ami_assert(type(am.app.get("user")) == 'string', "USER not specified!", EXIT_INVALID_CONFIGURATION)
                 ami_assert(type(am.app.get_type()) == "table" or type(am.app.get_type()) == "string", "Invalid app type!"
                     , EXIT_INVALID_CONFIGURATION)
-                log_success("XTZ node configuration validated.")
+                log_success("XTZ dal node configuration validated.")
             end
         },
         ["dal-node"] = {
