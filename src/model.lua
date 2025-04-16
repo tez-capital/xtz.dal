@@ -60,14 +60,15 @@ table.insert(DAL_STARTUP_ARGS, 1, "--endpoint")
 table.insert(DAL_STARTUP_ARGS, 2, node_endpoint)
 
 local rpc_addr = am.app.get_configuration("RPC_ADDR", "127.0.0.1")
-local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr, 8732)
+local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr, 10732)
 
 am.app.set_model(
     {
         WANTED_BINARIES = wanted_binaries,
         RPC_ADDR = rpc_addr,
         RPC_HOST_AND_PORT = rpc_host_and_port,
-        NODE_RPC_HOST_AND_PORT = node_endpoint_host_and_port,
+        NODE_ENDPOINT = node_endpoint, -- injected to args too
+        NODE_ENDPOINT_HOST_AND_PORT = node_endpoint_host_and_port,
 		SERVICE_CONFIGURATION = util.merge_tables(
             {
                 TimeoutStopSec = 300,
