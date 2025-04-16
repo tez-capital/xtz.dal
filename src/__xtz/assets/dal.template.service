@@ -15,7 +15,7 @@ Environment="HOME={{{ROOT_DIR}}}/data"
 Environment=TEZOS_LOG='* -> {{{model.DAL_LOG_LEVEL}}}'
 WorkingDirectory={{{ROOT_DIR}}}/data
 
-ExecStart={{{ROOT_DIR}}}/bin/dal-node run --rpc-addr {{{model.RPC_ADDR}}} {{{model.DAL_STARTUP_ARGS__CLI_ARGS}}}
+ExecStart={{{ROOT_DIR}}}/bin/dal-node run --rpc-addr {{{model.RPC_HOST_AND_PORT}}} {{{model.DAL_STARTUP_ARGS__CLI_ARGS}}}
 
 {{#model.SERVICE_CONFIGURATION__ARRAY}}
 {{{key}}}={{{value}}}
