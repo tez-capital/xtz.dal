@@ -1,6 +1,6 @@
 {
     "id": "xtz.dal" ,
-    "version" : "0.0.5+octez.22.0.quebec",
+    "version" : "0.0.6+octez.22.0.quebec",
     "dependencies": [
         { "id":"xtz.base" }
     ]
