@@ -55,12 +55,12 @@ end
 
 local package_utils = require("__xtz.utils")
 local node_endpoint = am.app.get_configuration("NODE_ENDPOINT", "http://127.0.0.1:8732/")
-local node_endpoint_host_and_port = package_utils.extract_host_and_port(node_endpoint)
+local node_endpoint_host_and_port = package_utils.extract_host_and_port(node_endpoint, 8732)
 table.insert(DAL_STARTUP_ARGS, 1, "--endpoint")
 table.insert(DAL_STARTUP_ARGS, 2, node_endpoint)
 
 local rpc_addr = am.app.get_configuration("RPC_ADDR", "127.0.0.1")
-local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr)
+local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr, 8732)
 
 am.app.set_model(
     {
