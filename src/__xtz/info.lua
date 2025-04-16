@@ -43,9 +43,7 @@ if print_all or print_service_info then
 	end
 end
 
-local rpc_addr = am.app.get_model("RPC_ADDR")
--- // TODO: do we want to allow different ports?
-local rpc_url = string.interpolate("http://${RPC_ADDR}:10732/", { RPC_ADDR = rpc_addr })
+local rpc_url = am.app.get_model("RPC_ADDR")
 -- {"status":"up","checks":[{"name":"p2p","status":"up"},{"name":"topics","status":"ok"},{"name":"gossipsub","status":"up"}]}
 -- 127.0.0.1:10732/health
 local rest_client = net.RestClient:new(rpc_url, { timeout = timeout })
