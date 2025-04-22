@@ -69,6 +69,7 @@ am.app.set_model(
         RPC_HOST_AND_PORT = rpc_host_and_port,
         NODE_ENDPOINT = node_endpoint, -- injected to args too
         NODE_ENDPOINT_HOST_AND_PORT = node_endpoint_host_and_port,
+        ATTESTER_PROFILES = attester_profiles,
 		SERVICE_CONFIGURATION = util.merge_tables(
             {
                 TimeoutStopSec = 300,

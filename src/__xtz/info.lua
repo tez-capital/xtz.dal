@@ -43,6 +43,13 @@ if print_all or print_service_info then
 	end
 end
 
+-- attesters
+local attester_profiles = am.app.get_model("ATTESTER_PROFILES")
+if table.is_array(attester_profiles) and #attester_profiles > 0 then
+	info.attester_profiles = attester_profiles
+end
+
+-- health
 local rpc_url = am.app.get_model("RPC_ADDR")
 -- {"status":"up","checks":[{"name":"p2p","status":"up"},{"name":"topics","status":"ok"},{"name":"gossipsub","status":"up"}]}
 -- 127.0.0.1:10732/health
