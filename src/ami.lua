@@ -130,7 +130,30 @@ return {
         about = {
             description = "ami 'about' sub command",
             summary = "Prints information about application",
-            action = '__xtz/log.lua',
+            action = function(_, _, _, _)
+                local ok, about_raw = fs.safe_read_file("__xtz/about.hjson")
+                ami_assert(ok, "Failed to read about file!", EXIT_APP_ABOUT_ERROR)
+
+                local ok, about = hjson.safe_parse(about_raw)
+                about["App Type"] = am.app.get({ "type", "id" }, am.app.get("type"))
+                ami_assert(ok, "Failed to parse about file!", EXIT_APP_ABOUT_ERROR)
+                if am.options.OUTPUT_FORMAT == "json" then
+                    print(hjson.stringify_to_json(about, { indent = false, skip_keys = true }))
+                else
+                    print(hjson.stringify(about))
+                end
+            end
+        },
+        version = {
+            description = "ami 'version' sub command",
+            summary = "Prints versions of binaries used by the app",
+            action = "__xtz/version.lua",
+            options = {
+                all = {
+                    description = "Prent version and all related versions - dependencies, binaries...",
+                    type = "boolean"
+                }
+            }
         },
         ["install-trusted-setup"] = {
             description = "ami 'install-trusted-setup' sub command",
