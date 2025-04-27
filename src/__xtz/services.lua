@@ -1,13 +1,14 @@
 local app_id = am.app.get("id")
 
 local possible_residue = {
+	app_id .. "-xtz-prism-server"
 }
 
 local dal_services = {
 	[app_id .. "-xtz-dal"] = am.app.get_configuration("NODE_SERVICE_FILE", "__xtz/assets/dal")
 }
 local prism_services = {
-	[app_id .. "-xtz-prism-server"] = "__xtz/assets/prism"
+	[app_id .. "-xtz-prism"] = "__xtz/assets/prism"
 }
 
 local dal_binaries = { "dal-node" }

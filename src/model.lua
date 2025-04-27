@@ -48,6 +48,13 @@ if attester_profiles_list_raw ~= nil then
     end
 end
 
+attester_profiles = table.reduce(attester_profiles, function(acc, v)
+    if type(v) == "string" and not table.includes(acc, v) then
+        table.insert(acc, v)
+    end
+    return acc
+end, {})
+
 if table.is_array(attester_profiles) and #attester_profiles > 0 then
     table.insert(DAL_STARTUP_ARGS, 1, "--attester-profiles")
     table.insert(DAL_STARTUP_ARGS, 2, string.join(",", table.unpack(attester_profiles)))
