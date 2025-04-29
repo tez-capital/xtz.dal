@@ -50,7 +50,7 @@ if table.is_array(attester_profiles) and #attester_profiles > 0 then
 end
 
 -- health
-local rpc_url = am.app.get_model("RPC_ADDR")
+local rpc_url = am.app.get_model("LOCAL_RPC_ADDR")
 -- {"status":"up","checks":[{"name":"p2p","status":"up"},{"name":"topics","status":"ok"},{"name":"gossipsub","status":"up"}]}
 -- 127.0.0.1:10732/health
 local rest_client = net.RestClient:new(rpc_url, { timeout = timeout })

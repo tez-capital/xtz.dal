@@ -69,11 +69,21 @@ table.insert(DAL_STARTUP_ARGS, 2, node_endpoint)
 local rpc_addr = am.app.get_configuration("RPC_ADDR", "http://127.0.0.1:10732")
 local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr, 10732)
 
+local local_rpc_addr = rpc_addr
+if not local_rpc_addr:match("127%.0%.0%.1") then
+    local_rpc_addr = am.app.get_configuration("LOCAL_RPC_ADDR", "http://127.0.0.1:10732")
+    table.insert(DAL_STARTUP_ARGS, "--rpc-addr")
+    table.insert(DAL_STARTUP_ARGS, local_rpc_addr)
+end
+local local_rpc_addr_host_and_port = package_utils.extract_host_and_port(local_rpc_addr, 10732)
+
 am.app.set_model(
     {
         WANTED_BINARIES = wanted_binaries,
         RPC_ADDR = rpc_addr,
         RPC_HOST_AND_PORT = rpc_host_and_port,
+        LOCAL_RPC_ADDR = local_rpc_addr,
+        LOCAL_RPC_HOST_AND_PORT = local_rpc_addr_host_and_port,
         NODE_ENDPOINT = node_endpoint, -- injected to args too
         NODE_ENDPOINT_HOST_AND_PORT = node_endpoint_host_and_port,
         ATTESTER_PROFILES = attester_profiles,
