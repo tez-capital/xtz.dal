@@ -70,12 +70,13 @@ local rpc_addr = am.app.get_configuration("RPC_ADDR", "http://127.0.0.1:10732")
 local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr, 10732)
 
 local local_rpc_addr = rpc_addr
+local local_rpc_addr_host_and_port = package_utils.extract_host_and_port(local_rpc_addr, 10732)
 if not local_rpc_addr:match("127%.0%.0%.1") then
     local_rpc_addr = am.app.get_configuration("LOCAL_RPC_ADDR", "http://127.0.0.1:10732")
+    local_rpc_addr_host_and_port = package_utils.extract_host_and_port(local_rpc_addr, 10732)
     table.insert(DAL_STARTUP_ARGS, "--rpc-addr")
-    table.insert(DAL_STARTUP_ARGS, local_rpc_addr)
+    table.insert(DAL_STARTUP_ARGS, local_rpc_addr_host_and_port)
 end
-local local_rpc_addr_host_and_port = package_utils.extract_host_and_port(local_rpc_addr, 10732)
 
 am.app.set_model(
     {
