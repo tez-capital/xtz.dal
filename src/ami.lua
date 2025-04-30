@@ -100,6 +100,13 @@ return {
             },
             context_fail_exit_code = EXIT_APP_INTERNAL_ERROR
         },
+        prism = {
+            description = "ami 'prism' sub command",
+            summary = "Passes any passed arguments directly to prism.",
+            type = "external",
+            exec = "bin/prism",
+            context_fail_exit_code = EXIT_APP_INTERNAL_ERROR
+        },
         log = {
             description = "ami 'log' sub command",
             summary = 'Prints logs from services.',
