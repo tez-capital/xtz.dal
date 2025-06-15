@@ -8,4 +8,8 @@
         dal-node: https://gitlab.com/tezos/tezos/-/package_files/185566030/download
         prism: https://github.com/alis-is/prism-releases/releases/download/0.4.1/prism-linux-amd64
     }
+    darwin-arm64: {
+        dal-node: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v22.0-2025-06-04_15-52/octez-dal-node
+        prism: https://github.com/alis-is/prism-releases/releases/download/0.4.1/prism-macos-arm64
+    }
 }

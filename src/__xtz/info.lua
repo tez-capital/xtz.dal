@@ -10,7 +10,6 @@ local print_dal_info = options.dal
 local print_service_info = options.services
 local print_all = (not print_dal_info) and (not print_service_info)
 
-local service_manager = require "__xtz.service-manager"
 local info = {
 	level = "ok",
 	status = "dal-node is operational",
@@ -24,22 +23,15 @@ if is_baker then
 	info.status = "XTZ baker is operational"
 end
 
-local services = require "__xtz.services"
-
 if print_all or print_service_info then
-	for k, v in pairs(services.all_names) do
-		if type(v) ~= "string" then goto CONTINUE end
-		local ok, status, started = service_manager.safe_get_service_status(v)
-		ami_assert(ok, "Failed to get status of " .. v .. ".service " .. (status or ""), EXIT_PLUGIN_EXEC_ERROR)
-		info.services[k] = {
-			status = status,
-			started = started
-		}
-		if status ~= "running" then
-			info.status = "One or more baker services is not running"
-			info.level = "error"
-		end
-		::CONTINUE::
+	local service_manager = require"__xtz.service-manager"
+	local services = require"__xtz.services"
+
+	local statuses, all_running = service_manager.get_services_status(services.active_names)
+	info.services = statuses
+	if not all_running then
+		info.status = "one or more baker services is not running"
+		info.level = "error"
 	end
 end
 
@@ -55,8 +47,8 @@ local rpc_url = am.app.get_model("LOCAL_RPC_ADDR")
 -- 127.0.0.1:10732/health
 local rest_client = net.RestClient:new(rpc_url, { timeout = timeout })
 if print_all or print_dal_info then
-	local ok, response = rest_client:safe_get("health")
-	if ok then
+	local response, _ = rest_client:get("health")
+	if response then
 		local data = response.data
 		info.dal_health = data
 	else

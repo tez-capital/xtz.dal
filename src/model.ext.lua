@@ -1,29 +1,22 @@
-local ok, platform_plugin = am.plugin.safe_get("platform")
-if not ok then
-    log_error("Cannot determine platform!")
-    return
-end
-local ok, platform = platform_plugin.get_platform()
-if not ok then
-    log_error("Cannot determine platform!")
-    return
-end
-
 local download_links = hjson.parse(fs.read_file("__xtz/sources.hjson"))
-
 local download_urls = nil
 
-if platform.OS == "unix" then
-	download_urls = download_links["linux-x86_64"]
-    if platform.SYSTEM_TYPE:match("[Aa]arch64") then
-        download_urls = download_links["linux-arm64"]
+local system_os = am.app.get_model("SYSTEM_OS", "unknown")
+local system_distro = am.app.get_model("SYSTEM_DISTRO", "unknown")
+local system_type = am.app.get_model("SYSTEM_TYPE", "unknown")
+
+if system_os == "unix" then
+    if system_distro == "MacOS" then
+        download_urls = download_links["darwin-arm64"]
+    else
+        download_urls = download_links["linux-x86_64"]
+        if system_type:match("[Aa]arch64") then
+            download_urls = download_links["linux-arm64"]
+        end
     end
 end
 
-if download_urls == nil then
-    log_error("Platform not supported!")
-    return
-end
+ami_assert(download_urls ~= nil, "no download URLs found for the current platform: " .. system_os .. " " .. system_distro .. " " .. system_type)
 
 am.app.set_model(
     {
@@ -33,7 +26,7 @@ am.app.set_model(
 )
 
 local services = require("__xtz.services")
-local wanted_binaries = services.all_binaries
+local wanted_binaries = services.wanted_binaries
 
 local TEZOS_LOG_LEVEL = am.app.get_configuration("TEZOS_LOG_LEVEL", "info")
 
@@ -60,20 +53,20 @@ if table.is_array(attester_profiles) and #attester_profiles > 0 then
     table.insert(DAL_STARTUP_ARGS, 2, string.join(",", table.unpack(attester_profiles)))
 end
 
-local package_utils = require("__xtz.utils")
+local base_utils = require("__xtz.base_utils")
 local node_endpoint = am.app.get_configuration("NODE_ENDPOINT", "http://127.0.0.1:8732/")
-local node_endpoint_host_and_port = package_utils.extract_host_and_port(node_endpoint, 8732)
+local node_endpoint_host_and_port = base_utils.extract_host_and_port(node_endpoint, 8732)
 table.insert(DAL_STARTUP_ARGS, 1, "--endpoint")
 table.insert(DAL_STARTUP_ARGS, 2, node_endpoint)
 
 local rpc_addr = am.app.get_configuration("RPC_ADDR", "http://127.0.0.1:10732")
-local rpc_host_and_port = package_utils.extract_host_and_port(rpc_addr, 10732)
+local rpc_host_and_port = base_utils.extract_host_and_port(rpc_addr, 10732)
 
 local local_rpc_addr = rpc_addr
-local local_rpc_addr_host_and_port = package_utils.extract_host_and_port(local_rpc_addr, 10732)
+local local_rpc_addr_host_and_port = base_utils.extract_host_and_port(local_rpc_addr, 10732)
 if not local_rpc_addr:match("127%.0%.0%.1") then
     local_rpc_addr = am.app.get_configuration("LOCAL_RPC_ADDR", "http://127.0.0.1:10732")
-    local_rpc_addr_host_and_port = package_utils.extract_host_and_port(local_rpc_addr, 10732)
+    local_rpc_addr_host_and_port = base_utils.extract_host_and_port(local_rpc_addr, 10732)
     table.insert(DAL_STARTUP_ARGS, "--rpc-addr")
     table.insert(DAL_STARTUP_ARGS, local_rpc_addr_host_and_port)
 end
