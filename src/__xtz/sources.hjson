@@ -1,6 +1,5 @@
 // SOURCE: https://gitlab.com/tezos/tezos/-/packages/40366546 
 // macOS SOURCE: https://github.com/tez-capital/tezos-macos-pipeline/releases/tag/octez-v22.1-2025-06-11_20-14
-
 {
 	darwin-arm64: {
 		dal-node: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v22.1-2025-06-11_20-14/octez-dal-node

@@ -1,5 +1,5 @@
 -- SOURCE: https://gitlab.com/tezos/tezos/-/releases
--- eli src/__xtz/update-sources.lua https://gitlab.com/tezos/tezos/-/packages/25835249  https://github.com/tez-capital/tezos-macos-pipeline/releases/tag/octez-v22.1-2025-06-11_20-14
+-- eli src/__xtz/update-sources.lua https://gitlab.com/tezos/tezos/-/packages/25835249 https://github.com/tez-capital/tezos-macos-pipeline/releases/tag/octez-v22.1-2025-06-11_20-14
 
 local hjson = require "hjson"
 local args = table.pack(...)
@@ -83,7 +83,7 @@ for platform, sources in pairs(current_sources) do
 end
 
 local new_content = "// SOURCE: " .. source .. " \n" ..
-	"// macOS SOURCE: " .. macos_source .. "\n\n"
+	"// macOS SOURCE: " .. macos_source .. "\n"
 new_content = new_content .. hjson.stringify(current_sources, { separator = true, sort_keys = true })
 
 fs.write_file("src/__xtz/sources.hjson", new_content)
