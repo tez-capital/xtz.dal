@@ -19,7 +19,9 @@ for _, platform_sources in pairs(sources) do
 
 		-- https://gitlab.com/tezos/tezos/-/package_files/130339715/download
 		-- extract id from url
-		local source_id = source_url:match("package_files/(%d+)/download")
+		local source_id = source_url:match("package_files/(%d+)/download") or
+			source_url:match("tez%-capital/tezos%-macos%-pipeline/releases/download/.*")
+
 		if not source_id then
 			error("Invalid source url: " .. source_url)
 		end
