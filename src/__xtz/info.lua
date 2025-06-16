@@ -59,7 +59,7 @@ if print_all or print_dal_info then
 	end
 
 	if info.dal_health.status ~= "up" then
-		info.status = "DAL node is not running"
+		info.status = string.interpolate("DAL node is NOT healthy (status: ${status})", { status = table.get(info, { "dal_health", "status"}, "unknown")})
 		info.level = "error"
 	end
 end
