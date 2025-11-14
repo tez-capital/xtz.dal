@@ -37,7 +37,9 @@ local attester_profiles = am.app.get_configuration("ATTESTER_PROFILES", {})
 local attester_profiles_list_raw = io.open("attester_profiles.list", "r+b")
 if attester_profiles_list_raw ~= nil then
     for profile in attester_profiles_list_raw:lines() do
-        table.insert(attester_profiles, profile)
+        if profile:match("%S") then -- Check if the profile is not just whitespace
+            table.insert(attester_profiles, string.trim(profile))
+        end
     end
 end
 
