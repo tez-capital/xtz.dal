@@ -1,6 +1,6 @@
 {
     "id": "xtz.dal" ,
-    "version" : "23.2.2+S",
+    "version" : "23.3.0+S",
     "dependencies": [
         { "id":"xtz.base" }
     ]
