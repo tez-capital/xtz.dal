@@ -1,16 +1,16 @@
-// SOURCE: https://gitlab.com/tezos/tezos/-/packages/49888878 
-// macOS SOURCE: https://github.com/tez-capital/tezos-macos-pipeline/releases/tag/octez-v23.3-2025-12-03_16-30
+// SOURCE: https://gitlab.com/tezos/tezos/-/packages/51144825 
+// macOS SOURCE: https://github.com/tez-capital/tezos-macos-pipeline/releases/tag/octez-v24.0-2026-01-08_17-18
 {
 	darwin-arm64: {
-		dal-node: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v23.3-2025-12-03_16-30/octez-dal-node
+		dal-node: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v24.0-2026-01-08_17-18/octez-dal-node
 		prism: https://github.com/alis-is/prism-releases/releases/download/0.4.7/prism-macos-arm64
 	}
 	linux-arm64: {
-		dal-node: https://gitlab.com/tezos/tezos/-/package_files/251686563/download
+		dal-node: https://gitlab.com/tezos/tezos/-/package_files/258590645/download
 		prism: https://github.com/alis-is/prism-releases/releases/download/0.4.7/prism-linux-arm64
 	}
 	linux-x86_64: {
-		dal-node: https://gitlab.com/tezos/tezos/-/package_files/251684453/download
+		dal-node: https://gitlab.com/tezos/tezos/-/package_files/258587833/download
 		prism: https://github.com/alis-is/prism-releases/releases/download/0.4.7/prism-linux-amd64
 	}
 }
