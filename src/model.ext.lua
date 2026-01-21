@@ -1,30 +1,3 @@
-local download_links = hjson.parse(fs.read_file("__xtz/sources.hjson"))
-local download_urls = nil
-
-local system_os = am.app.get_model("SYSTEM_OS", "unknown")
-local system_distro = am.app.get_model("SYSTEM_DISTRO", "unknown")
-local system_type = am.app.get_model("SYSTEM_TYPE", "unknown")
-
-if system_os == "unix" then
-    if system_distro == "MacOS" then
-        download_urls = download_links["darwin-arm64"]
-    else
-        download_urls = download_links["linux-x86_64"]
-        if system_type:match("[Aa]arch64") then
-            download_urls = download_links["linux-arm64"]
-        end
-    end
-end
-
-ami_assert(download_urls ~= nil, "no download URLs found for the current platform: " .. system_os .. " " .. system_distro .. " " .. system_type)
-
-am.app.set_model(
-    {
-        DOWNLOAD_URLS = am.app.get_configuration("SOURCES", download_urls),
-    },
-    { merge = true, overwrite = true }
-)
-
 local services = require("__xtz.services")
 local wanted_binaries = services.wanted_binaries
 
@@ -83,11 +56,12 @@ am.app.set_model(
         NODE_ENDPOINT = node_endpoint, -- injected to args too
         NODE_ENDPOINT_HOST_AND_PORT = node_endpoint_host_and_port,
         ATTESTER_PROFILES = attester_profiles,
-		SERVICE_CONFIGURATION = util.merge_tables(
+        SERVICE_CONFIGURATION = util.merge_tables(
             {
                 TimeoutStopSec = 300,
             },
-            type(am.app.get_configuration("SERVICE_CONFIGURATION")) == "table" and am.app.get_configuration("SERVICE_CONFIGURATION") or {},
+            type(am.app.get_configuration("SERVICE_CONFIGURATION")) == "table" and
+            am.app.get_configuration("SERVICE_CONFIGURATION") or {},
             true
         ),
         DAL_LOG_LEVEL = am.app.get_configuration("DAL_LOG_LEVEL", TEZOS_LOG_LEVEL),
