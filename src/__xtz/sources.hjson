@@ -4,9 +4,9 @@
 {
 	darwin-arm64: {
 		dal-node: {
-			sha256: 7944af7138f133985447c325e7f0c9943dd093990d4f5f153265937fb1da9bcc
-			url: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v24.0-2026-01-08_17-18/octez-dal-node
-			version: "24.0"
+			sha256: 3017a9d71f6ad30536d1d520bfd108685279655c8202ac8d0015598b11951cc8
+			url: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v24.1-2026-01-23_13-16/octez-dal-node
+			version: "24.1"
 		}
 		prism: {
 			sha256: a9352724d479fcdce5eccc63b340cc3c82ccebd50c5e25bc9627da3b9898feaa
@@ -16,9 +16,9 @@
 	}
 	linux-arm64: {
 		dal-node: {
-			sha256: b2a043a24c707e275b0f934434ab12319085856cb3bed039a6dc4b4e7165aee1
-			url: https://octez.tezos.com/releases/octez-v24.0/binaries/arm64/octez-dal-node
-			version: "24.0"
+			sha256: b2293ce5bb40b0499bccc25320da4b4a8d1da874c6a93a1b8ba4ef52345fd2cd
+			url: https://octez.tezos.com/releases/octez-v24.1/binaries/arm64/octez-dal-node
+			version: "24.1"
 		}
 		prism: {
 			sha256: 4b8b51bc6bf7a4de3938a1aa36e4d6bc07dcceebe9de5052ad1d2f158ba550b3
@@ -28,9 +28,9 @@
 	}
 	linux-x86_64: {
 		dal-node: {
-			sha256: 49c70c8a3867768c71d55b07fe5dcb7fa6ac12a15962557842b33a5b85b9c3ce
-			url: https://octez.tezos.com/releases/octez-v24.0/binaries/x86_64/octez-dal-node
-			version: "24.0"
+			sha256: 99734da0282ceb5bb5b2208c65afe02c32d1de35634e49f72bdac77538f2a8ca
+			url: https://octez.tezos.com/releases/octez-v24.1/binaries/x86_64/octez-dal-node
+			version: "24.1"
 		}
 		prism: {
 			sha256: 184e10f55a2b5de60a26682207325d3b0addfcce5e02f328be37272013dd2445
