@@ -16,6 +16,9 @@
 	}
 	linux-arm64: {
 		dal-node: {
+			mirrors: {
+				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-24.1/24.1/arm64-octez-dal-node
+			}
 			sha256: b2293ce5bb40b0499bccc25320da4b4a8d1da874c6a93a1b8ba4ef52345fd2cd
 			url: https://octez.tezos.com/releases/octez-v24.1/binaries/arm64/octez-dal-node
 			version: "24.1"
@@ -28,6 +31,9 @@
 	}
 	linux-x86_64: {
 		dal-node: {
+			mirrors: {
+				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-24.1/24.1/x86_64-octez-dal-node
+			}
 			sha256: 99734da0282ceb5bb5b2208c65afe02c32d1de35634e49f72bdac77538f2a8ca
 			url: https://octez.tezos.com/releases/octez-v24.1/binaries/x86_64/octez-dal-node
 			version: "24.1"

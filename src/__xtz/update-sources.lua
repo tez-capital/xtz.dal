@@ -127,11 +127,13 @@ local new_sources_map = {}
 local platforms = {
 	["linux-x86_64"] = {
 		octez_linux_arch = "x86_64",
-		prism_pattern = "prism%-linux%-amd64"
+		prism_pattern = "prism%-linux%-amd64",
+		gitlab_arch_prefix = "x86_64-"
 	},
 	["linux-arm64"] = {
 		octez_linux_arch = "arm64",
-		prism_pattern = "prism%-linux%-arm64"
+		prism_pattern = "prism%-linux%-arm64",
+		gitlab_arch_prefix = "arm64-"
 	},
 	["darwin-arm64"] = {
 		is_mac = true,
@@ -175,15 +177,28 @@ for platform, config in pairs(platforms) do
 
 			for line in sums_content:gmatch("[^\r\n]+") do
 				local hash, filename = line:match("(%x+)%s+(.+)")
+				print("  Found " .. filename .. " with hash " .. hash)
 				if hash and filename then
 					if filename == "octez-dal-node" then
 						local url = "https://octez.tezos.com/releases/" ..
 							target_version .. "/binaries/" .. bin_arch .. "/" .. filename
 						local octez_version = target_version:match("^octez%-v(.+)$") or target_version
+
+						local mirrors = nil
+						if config.gitlab_arch_prefix then
+							local gitlab_url =
+								"https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-" ..
+								octez_version .. "/" .. octez_version .. "/" .. config.gitlab_arch_prefix .. filename
+							mirrors = {
+								gitlab = gitlab_url
+							}
+						end
+
 						new_platform_sources["dal-node"] = {
 							url = url,
 							sha256 = hash,
-							version = octez_version
+							version = octez_version,
+							mirrors = mirrors
 						}
 					end
 				end
