@@ -4,9 +4,9 @@
 {
 	darwin-arm64: {
 		dal-node: {
-			sha256: 9475bcea400de4a729677a99ea6453437604fb14208065f0eb167a76e854badf
-			url: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v24.2-2026-02-27_17-14/octez-dal-node
-			version: "24.2"
+			sha256: 985e29137699e5d8f85855c545f93e07c4d19c2b88280341605557dee0cc3cd6
+			url: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v24.3-2026-04-07_15-49/octez-dal-node
+			version: "24.3"
 		}
 		prism: {
 			sha256: a9352724d479fcdce5eccc63b340cc3c82ccebd50c5e25bc9627da3b9898feaa
@@ -17,11 +17,11 @@
 	linux-arm64: {
 		dal-node: {
 			mirrors: {
-				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-24.2/24.2/arm64-octez-dal-node
+				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-24.3/24.3/arm64-octez-dal-node
 			}
-			sha256: ccc750c45e3257e4eb93ba42712d9208a27a1824e92db389f923594fa7cc66dc
-			url: https://octez.tezos.com/releases/octez-v24.2/binaries/arm64/octez-dal-node
-			version: "24.2"
+			sha256: 97c81bd7b79e3a7237db45298cdac0233e69d00cd8c7c0fc05cc1aec61afd3b8
+			url: https://octez.tezos.com/releases/octez-v24.3/binaries/arm64/octez-dal-node
+			version: "24.3"
 		}
 		prism: {
 			sha256: 4b8b51bc6bf7a4de3938a1aa36e4d6bc07dcceebe9de5052ad1d2f158ba550b3
@@ -32,11 +32,11 @@
 	linux-x86_64: {
 		dal-node: {
 			mirrors: {
-				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-24.2/24.2/x86_64-octez-dal-node
+				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-24.3/24.3/x86_64-octez-dal-node
 			}
-			sha256: dadb1820efc9ee82ed88d6e76efb7fb9d54a797185dccc902607f65b693cc337
-			url: https://octez.tezos.com/releases/octez-v24.2/binaries/x86_64/octez-dal-node
-			version: "24.2"
+			sha256: 411b30ca177f037c2878387be5d7fa0b28051375c00f0e0cfdc11b1d484d4e23
+			url: https://octez.tezos.com/releases/octez-v24.3/binaries/x86_64/octez-dal-node
+			version: "24.3"
 		}
 		prism: {
 			sha256: 184e10f55a2b5de60a26682207325d3b0addfcce5e02f328be37272013dd2445
