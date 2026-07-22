@@ -6,7 +6,7 @@
 		dal-node: {
 			sha256: 6c74d75d7f334676941db437e77b6fb7324ff17f9307a133f3bb25408c3edfdd
 			url: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v25.1-2026-07-21_12-46/octez-dal-node
-			version: "25.0"
+			version: "25.1"
 		}
 		prism: {
 			sha256: a9352724d479fcdce5eccc63b340cc3c82ccebd50c5e25bc9627da3b9898feaa
@@ -21,7 +21,7 @@
 			}
 			sha256: 6f938af8d103b1b9768a0869f8332a1ac04e896b2fb152149715cb3fa7ab3d92
 			url: https://octez.tezos.com/releases/octez-v25.1/binaries/arm64/octez-dal-node
-			version: "25.0"
+			version: "25.1"
 		}
 		prism: {
 			sha256: 4b8b51bc6bf7a4de3938a1aa36e4d6bc07dcceebe9de5052ad1d2f158ba550b3
@@ -36,7 +36,7 @@
 			}
 			sha256: adf52f43a3934e4a9058423e536269e59f7291f4749e3659b8a97134e9fbaee4
 			url: https://octez.tezos.com/releases/octez-v25.1/binaries/x86_64/octez-dal-node
-			version: "25.0"
+			version: "25.1"
 		}
 		prism: {
 			sha256: 184e10f55a2b5de60a26682207325d3b0addfcce5e02f328be37272013dd2445
