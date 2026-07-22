@@ -4,7 +4,7 @@
 {
 	darwin-arm64: {
 		dal-node: {
-			sha256: 01347a024529f9a164e52ec46b9b391fb1d72e07847ca7764807b91673710fec
+			sha256: 6c74d75d7f334676941db437e77b6fb7324ff17f9307a133f3bb25408c3edfdd
 			url: https://github.com/tez-capital/tezos-macos-pipeline/releases/download/octez-v25.1-2026-07-21_12-46/octez-dal-node
 			version: "25.0"
 		}
@@ -19,7 +19,7 @@
 			mirrors: {
 				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-25.1/25.1/arm64-octez-dal-node
 			}
-			sha256: 4ca6bf07cba73dba6641af2800fbd9d61a3801c2d706ec03f7aa437fe98fa7f5
+			sha256: 6f938af8d103b1b9768a0869f8332a1ac04e896b2fb152149715cb3fa7ab3d92
 			url: https://octez.tezos.com/releases/octez-v25.1/binaries/arm64/octez-dal-node
 			version: "25.0"
 		}
@@ -34,7 +34,7 @@
 			mirrors: {
 				gitlab: https://gitlab.com/api/v4/projects/3836952/packages/generic/octez-binaries-25.1/25.1/x86_64-octez-dal-node
 			}
-			sha256: d2503465343bd5c45b03c60d6e51b2b03453c2dc3b73b8d38a0829a17c8417e3
+			sha256: adf52f43a3934e4a9058423e536269e59f7291f4749e3659b8a97134e9fbaee4
 			url: https://octez.tezos.com/releases/octez-v25.1/binaries/x86_64/octez-dal-node
 			version: "25.0"
 		}
